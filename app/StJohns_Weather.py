@@ -10,7 +10,6 @@ from data import reload_data, fetch_data, last_updated
 
 st.set_page_config(
     page_title= "Saint Johns Weather",
-    page_icon="c:\Users\19289\Downloads\favicon.png",
     
 )
 
