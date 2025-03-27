@@ -24,7 +24,7 @@ st.markdown(
 )
 
 #retrieve weather forecast data from API
-forecast = fetch_data()
+forecast = fetch_data(DATA_URL, DATA_FILE)
 periods = forecast["properties"]["periods"]
 
 #process wind speed values
