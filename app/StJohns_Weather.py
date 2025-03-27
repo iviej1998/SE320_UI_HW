@@ -4,7 +4,7 @@
 """
 
 import streamlit as st
-import pandas as st #data manipulation and creating DataFrames
+import pandas as pd #data manipulation and creating DataFrames
 import altair as alt #create interactive charts
 from data import reload_data, fetch_data, last_updated
 
