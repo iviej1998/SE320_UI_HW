@@ -12,6 +12,10 @@ from datetime import datetime #parsing and formatting date and time information
 DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/forecast" #set the API endpoint URL
 DATA_FILE = "./app/data/weather.json" #define a path to save and read cached weather forecast data
 
+headers = {
+    "User-Agent": "SE320App (iviej@my.erau.edu)"
+}
+
 #decorate fetch_data function to tell streamlit to cache the function's output
 #show_spinner: displays loading message
 #ttl: sets time-to-live for the cache to 10 minutes
