@@ -24,7 +24,7 @@ st.markdown(
 )
 
 #retrieve weather forecast data from API
-forecast = fetch_data(DATA_URL, DATA_FILE)
+forecast = fetch_data(DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/forecast", DATA_FILE = "./app/data/weather.json")
 periods = forecast["properties"]["periods"]
 
 #process wind speed values
