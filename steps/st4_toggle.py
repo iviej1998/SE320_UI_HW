@@ -4,7 +4,7 @@ from requests import get
 
 
 forecast = get(
-    "https://api.weather.gov/points/36.4216,-109.4842", timeout=3).json()
+    "https://api.weather.gov/gridpoints/FGZ/185,76/forecast", timeout=3).json()
 periods = forecast.get("properties").get("periods")
 all_cols = list(periods[0].keys())
 
