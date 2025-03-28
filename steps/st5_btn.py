@@ -3,7 +3,6 @@ import streamlit as st
 from requests import get
 from time import sleep
 
-
 def load_data() -> None:
     global periods, all_cols, pre_cols
     sleep(2)  # just to show that requests may take some time

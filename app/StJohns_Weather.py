@@ -7,6 +7,7 @@ import streamlit as st
 import pandas as pd #data manipulation and creating DataFrames
 import altair as alt #create interactive charts
 from data import reload_data, fetch_data, last_updated
+import requests
 
 st.set_page_config(
     page_title= "Saint Johns Weather",
@@ -25,8 +26,12 @@ st.markdown(
 
 #retrieve weather forecast data from API
 forecast = fetch_data(DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/forecast", DATA_FILE = "./app/data/weather.json")
-periods = forecast["properties"]["periods"]
-
+print(forecast)
+if "properties" in forecast and "periods" in forecast["properties"]:
+    periods = forecast["properties"]["periods"]
+else:
+    print("Error: 'properties' or 'periods' key not found in forecast data.")
+    
 #process wind speed values
 for p in periods:
     p["wind"] = max([int(w) for w in p["windSpeed"].split() if w.isdigit()])

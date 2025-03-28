@@ -31,7 +31,7 @@ def fetch_data(DATA_URL:str, DATA_FILE:str) -> dict:
         dict: dictionary containing forecast data
     """
     try: #attempt fetching and processing data while handling errors
-        forecast = get(url=DATA_URL, timeout = 4).json() # send HTTP GET request to the URL w/a 4 second timeout
+        forecast = get(url=DATA_URL, timeout = 4).json() # send HTTP GET request to the URL w/a 3 second timeout
         if forecast and forecast.get("properties", {}).get("periods"):
             #save forecast to file as a backup
             with open(DATA_FILE, "w", encoding="utf-8") as file:
