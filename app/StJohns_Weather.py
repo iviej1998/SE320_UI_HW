@@ -6,7 +6,7 @@
 import streamlit as st
 import pandas as pd #data manipulation and creating DataFrames
 import altair as alt #create interactive charts
-from data import reload_data, fetch_data, last_updated
+from data import reload_data, last_updated
 import requests
 
 st.set_page_config(
@@ -27,19 +27,17 @@ st.markdown(
 
 # Step 1: Fetch point metadata
 POINTS_URL = "https://api.weather.gov/points/34.6164,-109.422"
-points_response = requests.get(POINTS_URL)
+points_response = requests.get(POINTS_URL, timeout = 3)
 points_data = points_response.json()
 
 # Step 2: Get the forecast URL from metadata
 forecast_url = points_data["properties"]["forecast"]
 
 # Step 3: Fetch the actual forecast data
-forecast_response = requests.get(forecast_url)
+forecast_response = requests.get(forecast_url, timeout=3)
 forecast = forecast_response.json()
 
 #retrieve weather forecast data from API
-#forecast = fetch_data(DATA_URL = "https://api.weather.gov/points/34.6164,-109.422", DATA_FILE = "./app/data/weather.json")
-#print(forecast)
 if "properties" in forecast and "periods" in forecast["properties"]:
     periods = forecast["properties"]["periods"]
     #process wind speed values
