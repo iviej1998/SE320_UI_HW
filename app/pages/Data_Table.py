@@ -5,7 +5,7 @@
 import streamlit as st
 from data import reload_data, fetch_data, last_updated
 
-forecast = fetch_data(DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/forecast", DATA_FILE = "./app/data/weather.json")
+forecast = fetch_data(DATA_URL = "https://api.weather.gov/points/34.6164,-109.422", DATA_FILE = "./app/data/weather.json")
 periods = forecast.get("properties").get("periods")
 
 st.title("Weather Data Table")

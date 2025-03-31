@@ -9,7 +9,7 @@ from json import dump, load
 from dateutil import tz #managing time zones
 from datetime import datetime #parsing and formatting date and time information
 
-DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/forecast" #set the API endpoint URL
+DATA_URL = "https://api.weather.gov/points/34.6164,-109.422" #set the API endpoint URL
 DATA_FILE = "./app/data/weather.json" #define a path to save and read cached weather forecast data
 
 headers = {
@@ -72,10 +72,15 @@ def last_updated(forecast: dict) -> str:
     Returns:
         str: a formatted string 
     """
-    #extract the "updateTime" from the forecast's properties
-    #convert into a Python datetime object
-    dtime = datetime.fromisoformat(forecast['properties']['updateTime'])
-    #set timezone identifier to America/Arizona
-    dtime = dtime.replace(tzinfo=tz.gettz('UTC')).astimezone(tz.gettz("MST"))
-    #use strftime to format the datetime into a readable string
-    return dtime.strftime('%A, %B %-d, %Y %-I:%M:%S %p %Z')
+    try:
+        #extract the "updateTime" from the forecast's properties
+        #convert into a Python datetime object
+        dtime = datetime.fromisoformat(forecast['properties']['updateTime'])
+        #set timezone identifier to America/Arizona
+        dtime = dtime.replace(tzinfo=tz.gettz('UTC')).astimezone(tz.gettz("MST"))
+        #use strftime to format the datetime into a readable string
+        return dtime.strftime('%A, %B %-d, %Y %-I:%M:%S %p %Z')
+    except(KeyError, TypeError) as e:
+        print(f"[last_updated] Error: {e} | forecast = {forecast}")
+        return "Update time not available"
+        

@@ -25,7 +25,7 @@ st.markdown(
 )
 
 #retrieve weather forecast data from API
-forecast = fetch_data(DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/forecast", DATA_FILE = "./app/data/weather.json")
+forecast = fetch_data(DATA_URL = "https://api.weather.gov/points/34.6164,-109.422", DATA_FILE = "./app/data/weather.json")
 print(forecast)
 if "properties" in forecast and "periods" in forecast["properties"]:
     periods = forecast["properties"]["periods"]

@@ -7,7 +7,7 @@ def load_data() -> None:
     global periods, all_cols, pre_cols
     sleep(2)  # just to show that requests may take some time
     forecast = get(
-        "https://api.weather.gov/gridpoints/FGZ/185,76/forecast", timeout=3).json()
+        "https://api.weather.gov/points/34.6164,-109.422", timeout=3).json()
     periods = forecast.get("properties").get("periods")
     all_cols = list(periods[0].keys())
     pre_cols = ["name", "temperature"]
