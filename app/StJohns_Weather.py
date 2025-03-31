@@ -24,9 +24,22 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
+# Step 1: Fetch point metadata
+POINTS_URL = "https://api.weather.gov/points/34.6164,-109.422"
+points_response = requests.get(POINTS_URL)
+points_data = points_response.json()
+
+# Step 2: Get the forecast URL from metadata
+forecast_url = points_data["properties"]["forecast"]
+
+# Step 3: Fetch the actual forecast data
+forecast_response = requests.get(forecast_url)
+forecast = forecast_response.json()
+
 #retrieve weather forecast data from API
-forecast = fetch_data(DATA_URL = "https://api.weather.gov/points/34.6164,-109.422", DATA_FILE = "./app/data/weather.json")
-print(forecast)
+#forecast = fetch_data(DATA_URL = "https://api.weather.gov/points/34.6164,-109.422", DATA_FILE = "./app/data/weather.json")
+#print(forecast)
 if "properties" in forecast and "periods" in forecast["properties"]:
     periods = forecast["properties"]["periods"]
     #process wind speed values
@@ -35,6 +48,8 @@ if "properties" in forecast and "periods" in forecast["properties"]:
 else:
     print("Error: 'properties' or 'periods' key not found in forecast data.")
     
+
+
 
 #display title and last updated information
 st.title("Weather Forecast")

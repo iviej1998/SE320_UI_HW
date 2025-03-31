@@ -38,17 +38,21 @@ def fetch_data(DATA_URL:str, DATA_FILE:str) -> dict:
             # UTF-8 ensures correct handling of all characters
                 dump(forecast,file)
                 print("Data saved to weather.json", forecast)
-                return forecast #after saving the forecast, return the forecast dictionary
-            #if checking fails, attempt to open local file for reading
-            with open(DATA_FILE, "r", encoding="utf-8") as file:
-                forecast = load(file) #deserialize JSON data and load into variable
-                return forecast    
+            return forecast #after saving the forecast, return the forecast dictionary
     #OSError: occurs during file operations or network issues
     except OSError as err:
         st.error(str(err), icon="💣") #error message is displayed in streamlit with error icon
     #TypeError: occurs when decoding JSON
     except TypeError as err:
         st.error(str(err), icon="💣")
+        
+    try:
+        #if checking fails, attempt to open local file for reading
+        with open(DATA_FILE, "r", encoding="utf-8") as file:
+            forecast = load(file) #deserialize JSON data and load into variable
+            return forecast    
+    except (OSError, TypeError) as err:
+        st.error("Failed to load cached data: " + str(err), icon="💾")
     return {} #return empty dictionary upon failure
 
 def reload_data() -> None:
@@ -79,7 +83,7 @@ def last_updated(forecast: dict) -> str:
         #set timezone identifier to America/Arizona
         dtime = dtime.replace(tzinfo=tz.gettz('UTC')).astimezone(tz.gettz("MST"))
         #use strftime to format the datetime into a readable string
-        return dtime.strftime('%A, %B %-d, %Y %-I:%M:%S %p %Z')
+        return dtime.strftime('%A, %B %d, %Y %I:%M:%S %p %Z')
     except(KeyError, TypeError) as e:
         print(f"[last_updated] Error: {e} | forecast = {forecast}")
         return "Update time not available"
