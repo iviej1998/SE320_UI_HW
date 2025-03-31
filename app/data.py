@@ -9,7 +9,7 @@ from json import dump, load
 from dateutil import tz #managing time zones
 from datetime import datetime #parsing and formatting date and time information
 
-DATA_URL = "https://api.weather.gov/points/34.6164,-109.422" #set the API endpoint URL
+DATA_URL = "https://api.weather.gov/gridpoints/FGZ/152,54/forecast" #set the API endpoint URL
 DATA_FILE = "./app/data/weather.json" #define a path to save and read cached weather forecast data
 
 headers = {
@@ -32,7 +32,7 @@ def fetch_data(DATA_URL:str, DATA_FILE:str) -> dict:
     """
     try: #attempt fetching and processing data while handling errors
         forecast = get(url=DATA_URL, timeout = 4).json() # send HTTP GET request to the URL w/a 3 second timeout
-        if forecast and forecast.get("properties", {}).get("periods"):
+        if forecast and forecast.get("properties", {}) and forecast["properties"].get("periods"):
             #save forecast to file as a backup
             with open(DATA_FILE, "w", encoding="utf-8") as file:
             # UTF-8 ensures correct handling of all characters

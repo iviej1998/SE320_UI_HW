@@ -4,91 +4,316 @@
         {
             "@version": "1.1",
             "wx": "https://api.weather.gov/ontology#",
-            "s": "https://schema.org/",
             "geo": "http://www.opengis.net/ont/geosparql#",
             "unit": "http://codes.wmo.int/common/unit/",
-            "@vocab": "https://api.weather.gov/ontology#",
-            "geometry": {
-                "@id": "s:GeoCoordinates",
-                "@type": "geo:wktLiteral"
-            },
-            "city": "s:addressLocality",
-            "state": "s:addressRegion",
-            "distance": {
-                "@id": "s:Distance",
-                "@type": "s:QuantitativeValue"
-            },
-            "bearing": {
-                "@type": "s:QuantitativeValue"
-            },
-            "value": {
-                "@id": "s:value"
-            },
-            "unitCode": {
-                "@id": "s:unitCode",
-                "@type": "@id"
-            },
-            "forecastOffice": {
-                "@type": "@id"
-            },
-            "forecastGridData": {
-                "@type": "@id"
-            },
-            "publicZone": {
-                "@type": "@id"
-            },
-            "county": {
-                "@type": "@id"
-            }
+            "@vocab": "https://api.weather.gov/ontology#"
         }
     ],
-    "id": "https://api.weather.gov/points/34.6164,-109.422",
     "type": "Feature",
     "geometry": {
-        "type": "Point",
+        "type": "Polygon",
         "coordinates": [
-            -109.422,
-            34.6164
+            [
+                [
+                    -109.3994,
+                    34.6081
+                ],
+                [
+                    -109.4023,
+                    34.6305
+                ],
+                [
+                    -109.4296,
+                    34.628099999999996
+                ],
+                [
+                    -109.4267,
+                    34.6057
+                ],
+                [
+                    -109.3994,
+                    34.6081
+                ]
+            ]
         ]
     },
     "properties": {
-        "@id": "https://api.weather.gov/points/34.6164,-109.422",
-        "@type": "wx:Point",
-        "cwa": "FGZ",
-        "forecastOffice": "https://api.weather.gov/offices/FGZ",
-        "gridId": "FGZ",
-        "gridX": 152,
-        "gridY": 54,
-        "forecast": "https://api.weather.gov/gridpoints/FGZ/152,54/forecast",
-        "forecastHourly": "https://api.weather.gov/gridpoints/FGZ/152,54/forecast/hourly",
-        "forecastGridData": "https://api.weather.gov/gridpoints/FGZ/152,54",
-        "observationStations": "https://api.weather.gov/gridpoints/FGZ/152,54/stations",
-        "relativeLocation": {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [
-                    -109.37691,
-                    34.500368
-                ]
-            },
-            "properties": {
-                "city": "St. Johns",
-                "state": "AZ",
-                "distance": {
-                    "unitCode": "wmoUnit:m",
-                    "value": 13546.803280277
-                },
-                "bearing": {
-                    "unitCode": "wmoUnit:degree_(angle)",
-                    "value": 342
-                }
-            }
+        "units": "us",
+        "forecastGenerator": "BaselineForecastGenerator",
+        "generatedAt": "2025-03-31T20:04:05+00:00",
+        "updateTime": "2025-03-31T19:38:18+00:00",
+        "validTimes": "2025-03-31T13:00:00+00:00/P7DT15H",
+        "elevation": {
+            "unitCode": "wmoUnit:m",
+            "value": 1705.9656
         },
-        "forecastZone": "https://api.weather.gov/zones/forecast/AZZ014",
-        "county": "https://api.weather.gov/zones/county/AZC001",
-        "fireWeatherZone": "https://api.weather.gov/zones/fire/AZZ114",
-        "timeZone": "America/Phoenix",
-        "radarStation": "KFSX"
+        "periods": [
+            {
+                "number": 1,
+                "name": "This Afternoon",
+                "startTime": "2025-03-31T13:00:00-07:00",
+                "endTime": "2025-03-31T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 72,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": null
+                },
+                "windSpeed": "23 to 28 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/day/wind_sct?size=medium",
+                "shortForecast": "Patchy Blowing Dust",
+                "detailedForecast": "Patchy blowing dust. Mostly sunny. High near 72, with temperatures falling to around 69 in the afternoon. Southwest wind 23 to 28 mph, with gusts as high as 44 mph."
+            },
+            {
+                "number": 2,
+                "name": "Tonight",
+                "startTime": "2025-03-31T18:00:00-07:00",
+                "endTime": "2025-04-01T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 43,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": null
+                },
+                "windSpeed": "21 to 24 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/night/wind_sct?size=medium",
+                "shortForecast": "Patchy Blowing Dust then Partly Cloudy",
+                "detailedForecast": "Patchy blowing dust before 9pm. Partly cloudy. Low around 43, with temperatures rising to around 45 overnight. Southwest wind 21 to 24 mph, with gusts as high as 39 mph."
+            },
+            {
+                "number": 3,
+                "name": "Tuesday",
+                "startTime": "2025-04-01T06:00:00-07:00",
+                "endTime": "2025-04-01T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 58,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": null
+                },
+                "windSpeed": "23 to 39 mph",
+                "windDirection": "W",
+                "icon": "https://api.weather.gov/icons/land/day/wind_sct?size=medium",
+                "shortForecast": "Blowing Dust",
+                "detailedForecast": "Blowing dust after 8am. Mostly sunny. High near 58, with temperatures falling to around 53 in the afternoon. West wind 23 to 39 mph, with gusts as high as 62 mph."
+            },
+            {
+                "number": 4,
+                "name": "Tuesday Night",
+                "startTime": "2025-04-01T18:00:00-07:00",
+                "endTime": "2025-04-02T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 30,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": null
+                },
+                "windSpeed": "7 to 24 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/night/wind_sct?size=medium",
+                "shortForecast": "Patchy Blowing Dust then Partly Cloudy",
+                "detailedForecast": "Patchy blowing dust before 7pm. Partly cloudy, with a low around 30. Southwest wind 7 to 24 mph, with gusts as high as 36 mph."
+            },
+            {
+                "number": 5,
+                "name": "Wednesday",
+                "startTime": "2025-04-02T06:00:00-07:00",
+                "endTime": "2025-04-02T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 51,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 30
+                },
+                "windSpeed": "7 to 21 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/day/snow,30?size=medium",
+                "shortForecast": "Chance Snow Showers",
+                "detailedForecast": "A chance of snow showers after 11am. Partly sunny, with a high near 51. Southwest wind 7 to 21 mph, with gusts as high as 32 mph. Chance of precipitation is 30%."
+            },
+            {
+                "number": 6,
+                "name": "Wednesday Night",
+                "startTime": "2025-04-02T18:00:00-07:00",
+                "endTime": "2025-04-03T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 27,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 20
+                },
+                "windSpeed": "7 to 17 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/night/snow,20/sct?size=medium",
+                "shortForecast": "Slight Chance Snow Showers then Partly Cloudy",
+                "detailedForecast": "A slight chance of snow showers before 11pm. Partly cloudy, with a low around 27. Southwest wind 7 to 17 mph, with gusts as high as 28 mph. Chance of precipitation is 20%."
+            },
+            {
+                "number": 7,
+                "name": "Thursday",
+                "startTime": "2025-04-03T06:00:00-07:00",
+                "endTime": "2025-04-03T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 52,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": null
+                },
+                "windSpeed": "7 to 12 mph",
+                "windDirection": "W",
+                "icon": "https://api.weather.gov/icons/land/day/bkn?size=medium",
+                "shortForecast": "Partly Sunny",
+                "detailedForecast": "Partly sunny, with a high near 52. West wind 7 to 12 mph, with gusts as high as 18 mph."
+            },
+            {
+                "number": 8,
+                "name": "Thursday Night",
+                "startTime": "2025-04-03T18:00:00-07:00",
+                "endTime": "2025-04-04T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 30,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": null
+                },
+                "windSpeed": "5 to 9 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/night/bkn?size=medium",
+                "shortForecast": "Mostly Cloudy",
+                "detailedForecast": "Mostly cloudy, with a low around 30. Southwest wind 5 to 9 mph."
+            },
+            {
+                "number": 9,
+                "name": "Friday",
+                "startTime": "2025-04-04T06:00:00-07:00",
+                "endTime": "2025-04-04T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 55,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 30
+                },
+                "windSpeed": "6 to 13 mph",
+                "windDirection": "NW",
+                "icon": "https://api.weather.gov/icons/land/day/rain_showers,20/rain_showers,30?size=medium",
+                "shortForecast": "Chance Rain Showers",
+                "detailedForecast": "A chance of rain showers after 11am. Mostly cloudy, with a high near 55. Northwest wind 6 to 13 mph, with gusts as high as 20 mph. Chance of precipitation is 30%."
+            },
+            {
+                "number": 10,
+                "name": "Friday Night",
+                "startTime": "2025-04-04T18:00:00-07:00",
+                "endTime": "2025-04-05T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 31,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 30
+                },
+                "windSpeed": "6 to 13 mph",
+                "windDirection": "SW",
+                "icon": "https://api.weather.gov/icons/land/night/snow,30/snow,20?size=medium",
+                "shortForecast": "Chance Rain And Snow Showers",
+                "detailedForecast": "A chance of rain showers before 9pm, then a chance of rain and snow showers between 9pm and 5am. Mostly cloudy, with a low around 31. Southwest wind 6 to 13 mph, with gusts as high as 18 mph. Chance of precipitation is 30%."
+            },
+            {
+                "number": 11,
+                "name": "Saturday",
+                "startTime": "2025-04-05T06:00:00-07:00",
+                "endTime": "2025-04-05T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 57,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 20
+                },
+                "windSpeed": "7 to 14 mph",
+                "windDirection": "NE",
+                "icon": "https://api.weather.gov/icons/land/day/rain_showers,20?size=medium",
+                "shortForecast": "Slight Chance Rain Showers",
+                "detailedForecast": "A slight chance of rain showers after 11am. Partly sunny, with a high near 57. Northeast wind 7 to 14 mph, with gusts as high as 20 mph. Chance of precipitation is 20%."
+            },
+            {
+                "number": 12,
+                "name": "Saturday Night",
+                "startTime": "2025-04-05T18:00:00-07:00",
+                "endTime": "2025-04-06T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 30,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 20
+                },
+                "windSpeed": "8 to 13 mph",
+                "windDirection": "E",
+                "icon": "https://api.weather.gov/icons/land/night/rain_showers,20/bkn?size=medium",
+                "shortForecast": "Slight Chance Rain Showers then Mostly Cloudy",
+                "detailedForecast": "A slight chance of rain showers before 11pm. Mostly cloudy, with a low around 30. East wind 8 to 13 mph, with gusts as high as 18 mph. Chance of precipitation is 20%."
+            },
+            {
+                "number": 13,
+                "name": "Sunday",
+                "startTime": "2025-04-06T06:00:00-07:00",
+                "endTime": "2025-04-06T18:00:00-07:00",
+                "isDaytime": true,
+                "temperature": 59,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 20
+                },
+                "windSpeed": "8 to 13 mph",
+                "windDirection": "E",
+                "icon": "https://api.weather.gov/icons/land/day/rain_showers,20?size=medium",
+                "shortForecast": "Slight Chance Rain Showers",
+                "detailedForecast": "A slight chance of rain showers after 11am. Mostly sunny, with a high near 59. East wind 8 to 13 mph, with gusts as high as 20 mph. Chance of precipitation is 20%."
+            },
+            {
+                "number": 14,
+                "name": "Sunday Night",
+                "startTime": "2025-04-06T18:00:00-07:00",
+                "endTime": "2025-04-07T06:00:00-07:00",
+                "isDaytime": false,
+                "temperature": 28,
+                "temperatureUnit": "F",
+                "temperatureTrend": "",
+                "probabilityOfPrecipitation": {
+                    "unitCode": "wmoUnit:percent",
+                    "value": 20
+                },
+                "windSpeed": "6 to 12 mph",
+                "windDirection": "E",
+                "icon": "https://api.weather.gov/icons/land/night/rain_showers,20/few?size=medium",
+                "shortForecast": "Slight Chance Rain Showers then Mostly Clear",
+                "detailedForecast": "A slight chance of rain showers before 11pm. Mostly clear, with a low around 28. East wind 6 to 12 mph, with gusts as high as 17 mph. Chance of precipitation is 20%."
+            }
+        ]
     }
 }
