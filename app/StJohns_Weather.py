@@ -29,12 +29,12 @@ forecast = fetch_data(DATA_URL = "https://api.weather.gov/gridpoints/FGZ/185,76/
 print(forecast)
 if "properties" in forecast and "periods" in forecast["properties"]:
     periods = forecast["properties"]["periods"]
+    #process wind speed values
+    for p in periods:
+        p["wind"] = max([int(w) for w in p["windSpeed"].split() if w.isdigit()])
 else:
     print("Error: 'properties' or 'periods' key not found in forecast data.")
     
-#process wind speed values
-for p in periods:
-    p["wind"] = max([int(w) for w in p["windSpeed"].split() if w.isdigit()])
 
 #display title and last updated information
 st.title("Weather Forecast")
