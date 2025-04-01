@@ -1,17 +1,21 @@
-# Use an official Python runtime as a base image
-FROM python:3.10-slim
+# Dockerfile to create the container image for the Cluster Visualization App (CVA)
+FROM python:3.12
+LABEL maintainer="Jillian Ivie <iviej@my.erau.edu>"
 
-# Set the working directory in the container
-WORKDIR /SE320_UI_HW
+RUN apt-get update && \
+    apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/America/Phoenix /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
 
-# Copy the current directory contents into the container at /app
-COPY . /SE320_UI_HW
+COPY . /se320_ui_hw
+RUN pip install --no-cache-dir --upgrade -r /cva/requirements.txt
+WORKDIR /se320_ui_hw/
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 8000
 
-# Expose the port Streamlit runs on
-EXPOSE 8501
-
-# Command to run the application
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+#  prevents Python from writing .pyc files to disk
+#  ensures that the python output is sent straight to terminal (e.g. the container log) without being first buffered
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/cva
+CMD ["python3.12",  "-m", "streamlit", "run", "--server.port", "8000", "./StJohns_Weather.py"]
