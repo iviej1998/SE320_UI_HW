@@ -8,7 +8,7 @@ RUN apt-get update && \
     dpkg-reconfigure -f noninteractive tzdata
 
 COPY . /se320_ui_hw
-RUN pip install --no-cache-dir --upgrade -r /cva/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /se320_ui_hw/requirements.txt
 WORKDIR /se320_ui_hw/
 
 EXPOSE 8000
@@ -18,4 +18,4 @@ EXPOSE 8000
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/cva
-CMD ["python3.12",  "-m", "streamlit", "run", "--server.port", "8000", "./StJohns_Weather.py"]
+CMD ["streamlit", "run", "app/StJohns_Weather.py", "--server.port=8501", "--server.address=0.0.0.0"]
